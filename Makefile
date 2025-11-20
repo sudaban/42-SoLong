@@ -1,8 +1,8 @@
 NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-LIBFT = vendor/libft/libft.a
-MINILIBX = vendor/mlx/libmlx.a
+LIBFT = libraries/libft/libft.a
+MINILIBX = libraries/mlx/libmlx.a
 MLXFLAG = -lXext -lX11 -lm
 
 SRC =	so_long.c src/allocation/allocation.c
@@ -15,19 +15,19 @@ $(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT) $(MINILIBX) $(MLXFLAG)
 
 $(LIBFT):
-	make -C vendor/libft
+	make -C libraries/libft
 
 $(MINILIBX):
-	make -C vendor/mlx
+	make -C libraries/mlx
 
 clean:
 	rm -f $(OBJ)
-	make -C vendor/libft clean
+	make -C libraries/libft clean
 
 fclean: clean
 	rm -f $(NAME)
-	make -C vendor/libft fclean
-	make -C vendor/mlx clean
+	make -C libraries/libft fclean
+	make -C libraries/mlx clean
 
 re: fclean all
 
