@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:22:55 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/20 11:28:13 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/20 11:54:45 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef struct s_game
 	t_map	*map;
 	void	*mlx_obj;
 }	t_game;
-
 
 void	check_file_name(const char *filename);
 #endif //SO_LONG_H
