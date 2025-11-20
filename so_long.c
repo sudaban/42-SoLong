@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:21:55 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/20 17:08:42 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/20 17:50:46 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int argc, char **argv)
 		if (!god_obj->map_obj)
 			safe_exit(1, ERROR_ALLOCATION);
 		load_map_data(god_obj->map_obj, filename);
+		check_shape(god_obj);
 		memory_cleanup(0);
 	}
 	return (0);

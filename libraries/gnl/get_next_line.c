@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 23:15:00 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/20 10:52:43 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/20 17:48:05 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,26 +94,26 @@ char	*extract_line(char *last)
 
 char	*get_next_line(int fd)
 {
-	static char	*last;
+	static char	*last[1024];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!last)
+	if (!last[fd])
 	{
-		last = memory_malloc(1);
-		if (!last)
+		last[fd] = memory_malloc(1);
+		if (!last[fd])
 			return (NULL);
-		last[0] = '\0';
+		last[fd][0] = '\0';
 	}
-	last = read_until_newline(fd, last);
-	if (!last)
+	last[fd] = read_until_newline(fd, last[fd]);
+	if (!last[fd])
 		return (NULL);
-	if (!*last)
-		return ((memory_free(last), last = NULL), NULL);
-	line = extract_line(last);
+	if (!*last[fd])
+		return ((memory_free(last[fd]), last[fd] = NULL), NULL);
+	line = extract_line(last[fd]);
 	if (!line)
-		return ((memory_free(last), last = NULL), NULL);
-	last = cleanup_buffer(last);
+		return ((memory_free(last[fd]), last[fd] = NULL), NULL);
+	last[fd] = cleanup_buffer(last[fd]);
 	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:22:55 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/20 16:48:53 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/20 17:42:08 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,6 @@ t_map	*init_map(void);
 t_game	*init_game(void);
 void	check_file_name(const char *filename);
 void	load_map_data(t_map *map, const char *filename);
+void	check_shape(t_game *god_obj);
+void	print_map(t_map *map);
 #endif //SO_LONG_H
