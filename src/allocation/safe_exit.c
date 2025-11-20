@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   allocation.h                                       :+:      :+:    :+:   */
+/*   safe_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 10:34:09 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/20 11:26:05 by sdaban           ###   ########.fr       */
+/*   Created: 2025/11/20 11:26:13 by sdaban            #+#    #+#             */
+/*   Updated: 2025/11/20 11:27:08 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ALLOCATION_H
-# define ALLOCATION_H
+#include "allocation.h"
+#include <unistd.h>
 
-# include <stddef.h>
-
-typedef struct s_memory
+void	safe_exit(int return_code, const char *error_msg)
 {
-	void			*ptr;
-	struct s_memory	*next;
-}					t_memory;
+	size_t	len;
 
-void				*memory_malloc(size_t size);
-void				memory_free(void *ptr);
-void				memory_cleanup(int status);
-void				safe_exit(int return_code, const char *error_msg);
-#endif
+	len = 0;
+	while (error_msg && error_msg[len])
+		len++;
+	if (error_msg)
+	{
+		write(2, error_msg, len);
+		write(2, "\n", 1);
+	}
+	memory_cleanup(return_code);
+}

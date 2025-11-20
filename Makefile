@@ -5,7 +5,8 @@ LIBFT = libraries/libft/libft.a
 MINILIBX = libraries/mlx/libmlx.a
 MLXFLAG = -lXext -lX11 -lm
 
-SRC =	so_long.c src/allocation/allocation.c
+SRC =	so_long.c src/allocation/allocation.c src/allocation/safe_exit.c \
+		src/map_operations/control.c
 
 OBJ = $(SRC:.c=.o)
 
