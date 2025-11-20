@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:22:55 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/20 11:54:45 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/20 16:48:53 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define ERROR_ARGC "Error\nInvalid number of arguments\n"
 # define ERROR_MAP "Error\nInvalid map\n"
 # define ERROR_EXTENSION "Error\nInvalid file extension\n"
+# define ERROR_ALLOCATION "Error\nMemory allocation failed\n"
 
 typedef struct s_map
 {
@@ -33,6 +34,9 @@ typedef struct s_map
 	size_t	player_x;
 	size_t	player_y;
 	size_t	collectibles;
+	size_t 	exit_pos;
+	size_t	start_pos;
+	size_t	wall_count;
 }	t_map;
 
 typedef struct s_player
@@ -42,9 +46,12 @@ typedef struct s_player
 
 typedef struct s_game
 {
-	t_map	*map;
+	t_map	*map_obj;
 	void	*mlx_obj;
 }	t_game;
 
+t_map	*init_map(void);
+t_game	*init_game(void);
 void	check_file_name(const char *filename);
+void	load_map_data(t_map *map, const char *filename);
 #endif //SO_LONG_H
