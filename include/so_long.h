@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:22:55 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/20 17:42:08 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/21 10:40:48 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 # define ERROR_MAP "Error\nInvalid map\n"
 # define ERROR_EXTENSION "Error\nInvalid file extension\n"
 # define ERROR_ALLOCATION "Error\nMemory allocation failed\n"
+# define ERROR_COLLECTIBLE "Error\nMap must contain at least one collectible (C)"
+# define ERROR_EXIT "Error\nMap must contain exactly one exit (E)"
+# define ERROR_PLAYER "Error\nMap must contain exactly one starting position (P)"
+# define ERROR_CHARACTERS "Error\nMap contains invalid characters"
+# define ERROR_WALLS "Error\nMap is not enclosed by walls"
+# define ERROR_MAP_PATH "Error\nMap is not fully traversable / missing path to collectibles or exit"
 
 typedef struct s_map
 {
@@ -34,7 +40,7 @@ typedef struct s_map
 	size_t	player_x;
 	size_t	player_y;
 	size_t	collectibles;
-	size_t 	exit_pos;
+	size_t	exit_pos;
 	size_t	start_pos;
 	size_t	wall_count;
 }	t_map;
@@ -56,4 +62,5 @@ void	check_file_name(const char *filename);
 void	load_map_data(t_map *map, const char *filename);
 void	check_shape(t_game *god_obj);
 void	print_map(t_map *map);
+void	validate_map(t_map *map);
 #endif //SO_LONG_H
