@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:21:55 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/21 10:31:36 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/22 12:49:28 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ int	main(int argc, char **argv)
 		load_map_data(god_obj->map_obj, filename);
 		check_shape(god_obj);
 		validate_map(god_obj->map_obj);
+		god_obj->res_obj = init_resources();
+		init_mlx(god_obj);
+		set_textures(god_obj);
 		memory_cleanup(0);
 	}
 	return (0);

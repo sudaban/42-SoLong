@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:22:55 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/21 10:40:48 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/22 12:36:35 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@
 # define ERROR_PLAYER "Error\nMap must contain exactly one starting position (P)"
 # define ERROR_CHARACTERS "Error\nMap contains invalid characters"
 # define ERROR_WALLS "Error\nMap is not enclosed by walls"
-# define ERROR_MAP_PATH "Error\nMap is not fully traversable / missing path to collectibles or exit"
+# define ERROR_MAP_PATH "Error\nMap is not fully traversable / missing path"
+# define ERROR_TEXTURE "Error\nFailed to load textures"
 
 typedef struct s_map
 {
@@ -50,17 +51,31 @@ typedef struct s_player
 	int		step_count;
 }	t_player;
 
+typedef struct s_resource
+{
+	void	*window;
+	void	*wall_texture;
+	void	*player_texture;
+	void	*collectible_texture;
+	void	*background_texture;
+	void	*exit_texture;
+}	t_resource;
+
 typedef struct s_game
 {
-	t_map	*map_obj;
-	void	*mlx_obj;
+	t_map		*map_obj;
+	t_resource	*res_obj;
+	void		*mlx_obj;
 }	t_game;
 
-t_map	*init_map(void);
-t_game	*init_game(void);
-void	check_file_name(const char *filename);
-void	load_map_data(t_map *map, const char *filename);
-void	check_shape(t_game *god_obj);
-void	print_map(t_map *map);
-void	validate_map(t_map *map);
+t_map		*init_map(void);
+t_game		*init_game(void);
+t_resource	*init_resources(void);
+void		init_mlx(t_game *god_obj);
+void		check_file_name(const char *filename);
+void		load_map_data(t_map *map, const char *filename);
+void		check_shape(t_game *god_obj);
+void		print_map(t_map *map);
+void		validate_map(t_map *map);
+void		set_textures(t_game *god_obj);
 #endif //SO_LONG_H

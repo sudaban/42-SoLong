@@ -6,12 +6,13 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 16:27:13 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/20 16:49:00 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/22 12:49:11 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 #include "../allocation/allocation.h"
+#include "../../libraries/mlx/mlx.h"
 
 t_map	*init_map(void)
 {
@@ -42,4 +43,36 @@ t_game	*init_game(void)
 	game->map_obj = NULL;
 	game->mlx_obj = NULL;
 	return (game);
+}
+
+t_resource	*init_resources(void)
+{
+	t_resource	*res;
+
+	res = (t_resource *)memory_malloc(sizeof(t_resource));
+	if (!res)
+		return (NULL);
+	res->window = NULL;
+	res->wall_texture = NULL;
+	res->player_texture = NULL;
+	res->collectible_texture = NULL;
+	res->background_texture = NULL;
+	res->exit_texture = NULL;
+	return (res);
+}
+
+void	init_mlx(t_game *god_obj)
+{
+	t_game	*g;
+
+	g = god_obj;
+	if (!g)
+		safe_exit(1, "Error\nGod object is NULL\n");
+	g->mlx_obj = mlx_init();
+	if (!g->mlx_obj)
+		safe_exit(1, "Error\nFailed to initialize MLX\n");
+	g->res_obj->window = mlx_new_window(g->mlx_obj,
+			g->map_obj->width * 64,
+			g->map_obj->height * 64,
+			"SOLONGKNK");
 }
