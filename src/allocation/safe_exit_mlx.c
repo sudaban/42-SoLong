@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/22 13:10:28 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 13:10:33 by sdaban           ###   ########.fr       */
+/*   Created: 2025/11/22 13:40:37 by sdaban            #+#    #+#             */
+/*   Updated: 2025/11/22 13:41:59 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static void	clean_every_mlx_object(t_game *game)
 	}
 	if (g->res_obj->window && g->mlx_obj)
 		mlx_destroy_window(g->mlx_obj, g->res_obj->window);
-	if (g->mlx_obj)
-		mlx_destroy_display(g->mlx_obj);
+	mlx_destroy_display(g->mlx_obj);
+	free(g->mlx_obj);
 }
 
 void	finish_and_clean(t_game *game)

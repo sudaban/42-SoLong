@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:22:55 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 13:25:57 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/22 13:48:40 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,6 @@ void		check_shape(t_game *god_obj);
 void		validate_map(t_map *map);
 void		set_textures(t_game *god_obj);
 void		render_resources(t_game *god_obj);
+int			handle_close(t_game *game);
+int			handle_key_press(int keycode, t_game *game);
 #endif //SO_LONG_H
