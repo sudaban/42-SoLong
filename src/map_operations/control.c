@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 11:17:16 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/20 11:54:36 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/22 15:06:56 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,20 @@ void	check_file_name(const char *filename)
 		safe_exit(1, ERROR_MAP);
 	if (close(fd) < 0)
 		safe_exit(1, ERROR_MAP);
+}
+
+void	check_shape(t_game *game_obj)
+{
+	size_t	i;
+
+	if (!game_obj || !game_obj->map_obj)
+		safe_exit(1, ERROR_MAP);
+	i = 0;
+	while (i < game_obj->map_obj->height)
+	{
+		if (ft_strlen(game_obj->map_obj->grid[i]) != game_obj->map_obj->width)
+			safe_exit(1, ERROR_MAP);
+		i++;
+	}
+	ft_putstr_fd("Map shape is valid.\n", 1);
 }

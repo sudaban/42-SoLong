@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 11:17:14 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/21 11:12:33 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/22 15:08:32 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,6 @@ static char	**split_into_grid(const char *content, size_t height)
 	return (grid);
 }
 
-
 void	load_map_data(t_map *map, const char *filename)
 {
 	int		fd;
@@ -152,22 +151,6 @@ void	load_map_data(t_map *map, const char *filename)
 		map->width = 0;
 }
 
-void	check_shape(t_game *game_obj)
-{
-	size_t	i;
-
-	if (!game_obj || !game_obj->map_obj)
-		safe_exit(1, ERROR_MAP);
-	i = 0;
-	while (i < game_obj->map_obj->height)
-	{
-		if (ft_strlen(game_obj->map_obj->grid[i]) != game_obj->map_obj->width)
-			safe_exit(1, ERROR_MAP);
-		i++;
-	}
-	ft_putstr_fd("Map shape is valid.\n", 1);
-}
-
 static void	check_enclosed_by_walls(t_map *map)
 {
 	size_t	x;
@@ -175,7 +158,6 @@ static void	check_enclosed_by_walls(t_map *map)
 
 	if (!map || !map->grid)
 		safe_exit(1, ERROR_MAP);
-	/* check top and bottom rows */
 	x = 0;
 	while (x < map->width)
 	{
@@ -183,7 +165,6 @@ static void	check_enclosed_by_walls(t_map *map)
 			safe_exit(1, ERROR_WALLS);
 		x++;
 	}
-	/* check left and right columns */
 	y = 0;
 	while (y < map->height)
 	{
@@ -229,7 +210,7 @@ static void	parse_map_chars(t_map *map)
 				walls++;
 			else if (ch == '0')
 			{
-				/* free space */
+				continue ;
 			}
 			else
 				safe_exit(1, ERROR_CHARACTERS);
@@ -249,77 +230,87 @@ static void	parse_map_chars(t_map *map)
 		safe_exit(1, ERROR_COLLECTIBLE);
 }
 
+static char	**dup_grid(char **grid, size_t height, size_t width)
+{
+	char	**copy;
+	size_t	i;
+
+	if (!grid)
+		return (NULL);
+	copy = memory_malloc(sizeof(char *) * (height + 1));
+	if (!copy)
+		return (NULL);
+	i = 0;
+	while (i < height)
+	{
+		copy[i] = memory_malloc(width + 1);
+		if (!copy[i])
+		{
+			size_t j = 0;
+			while (j < i)
+			{
+				memory_free(copy[j]);
+				j++;
+			}
+			memory_free(copy);
+			return (NULL);
+		}
+		ft_memcpy(copy[i], grid[i], width);
+		copy[i][width] = '\0';
+		i++;
+	}
+	copy[i] = NULL;
+	return (copy);
+}
+
+static void	free_grid(char **g, size_t h)
+{
+	size_t i;
+
+	if (!g)
+		return ;
+	i = 0;
+	while (i < h)
+	{
+		if (g[i])
+			memory_free(g[i]);
+		i++;
+	}
+	memory_free(g);
+}
+
+static void	dfs(char **str, int *elements, int x, int y, size_t h, size_t w)
+{
+	if (x < 0 || y < 0)
+		return ;
+	if ((size_t)x >= h || (size_t)y >= w)
+		return ;
+	if (str[x][y] == '1' || *elements == 0)
+		return ;
+	if (str[x][y] == 'E' || str[x][y] == 'C')
+		(*elements)--;
+	str[x][y] = '1';
+	dfs(str, elements, x, y + 1, h, w);
+	dfs(str, elements, x, y - 1, h, w);
+	dfs(str, elements, x + 1, y, h, w);
+	dfs(str, elements, x - 1, y, h, w);
+}
+
 static void	check_path_exists(t_map *map)
 {
-	size_t		cells;
-	int		*visited;
-	size_t		w;
-	size_t		h;
-	size_t		head;
-	size_t		tail;
-	size_t		*queue;
-	size_t		start_idx;
-	size_t		reachable_c;
-	int		exit_found;
+	char	**copy;
+	int		elements;
 
-	w = map->width;
-	h = map->height;
-	cells = w * h;
-	visited = memory_malloc(sizeof(int) * cells);
-	if (!visited)
+	if (!map || !map->grid)
+		safe_exit(1, ERROR_MAP);
+	copy = dup_grid(map->grid, map->height, map->width);
+	if (!copy)
 		safe_exit(1, ERROR_ALLOCATION);
-	queue = memory_malloc(sizeof(size_t) * cells);
-	if (!queue)
-	{
-		memory_free(visited);
-		safe_exit(1, ERROR_ALLOCATION);
-	}
-	/* init visited */
-	for (size_t i = 0; i < cells; i++)
-		visited[i] = 0;
-	/* start from player */
-	start_idx = map->player_y * w + map->player_x;
-	head = 0;
-	tail = 0;
-	queue[tail++] = start_idx;
-	visited[start_idx] = 1;
-	reachable_c = 0;
-	exit_found = 0;
-	while (head < tail)
-	{
-		size_t idx = queue[head++];
-		size_t y = idx / w;
-		size_t x = idx % w;
-		char ch = map->grid[y][x];
-		if (ch == 'C')
-			reachable_c++;
-		if (ch == 'E')
-			exit_found = 1;
-		/* explore neighbors: up/down/left/right if not wall and not visited */
-		if (y > 0 && !visited[(y - 1) * w + x] && map->grid[y - 1][x] != '1')
-		{
-			visited[(y - 1) * w + x] = 1;
-			queue[tail++] = (y - 1) * w + x;
-		}
-		if (y + 1 < h && !visited[(y + 1) * w + x] && map->grid[y + 1][x] != '1')
-		{
-			visited[(y + 1) * w + x] = 1;
-			queue[tail++] = (y + 1) * w + x;
-		}
-		if (x > 0 && !visited[y * w + (x - 1)] && map->grid[y][x - 1] != '1')
-		{
-			visited[y * w + (x - 1)] = 1;
-			queue[tail++] = y * w + (x - 1);
-		}
-		if (x + 1 < w && !visited[y * w + (x + 1)] && map->grid[y][x + 1] != '1')
-		{
-			visited[y * w + (x + 1)] = 1;
-			queue[tail++] = y * w + (x + 1);
-		}
-	}
-	memory_free(visited);
-	memory_free(queue);
-	if (reachable_c != map->collectibles || !exit_found)
+	elements = (int)map->collectibles + (int)map->exit_pos;
+	dfs(copy, &elements, (int)map->player_y, (int)map->player_x,
+		map->height, map->width);
+	free_grid(copy, map->height);
+	if (elements != 0)
 		safe_exit(1, ERROR_MAP_PATH);
 }
 
