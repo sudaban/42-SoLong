@@ -7,7 +7,7 @@ MLXFLAG = -lXext -lX11 -lm
 
 SRC =	so_long.c src/allocation/allocation.c src/allocation/safe_exit.c \
 		src/map_operations/control.c src/map_operations/map.c \
-		src/init/initalize.c \
+		src/init/initalize.c src/map_operations/map_utils.c \
 		libraries/gnl/get_next_line.c libraries/gnl/get_next_line_utils.c
 
 OBJ = $(SRC:.c=.o)

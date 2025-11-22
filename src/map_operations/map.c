@@ -6,12 +6,11 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 11:17:14 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/21 10:42:04 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/21 11:12:33 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include <stdio.h>
 #include <unistd.h>
 #include "../../include/so_long.h"
 #include "../../libraries/gnl/get_next_line.h"
