@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:21:55 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 13:06:16 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/22 13:25:57 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		god_obj->res_obj = init_resources();
 		init_mlx(god_obj);
 		set_textures(god_obj);
-		render_map(god_obj);
+		render_resources(god_obj);
 		mlx_loop(god_obj->mlx_obj);
 		finish_and_clean(god_obj);
 	}
