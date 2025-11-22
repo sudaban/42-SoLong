@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 16:27:13 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 12:49:11 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/22 17:13:15 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_game	*init_game(void)
 		return (NULL);
 	game->map_obj = NULL;
 	game->mlx_obj = NULL;
+	game->move_count = 0;
 	return (game);
 }
 

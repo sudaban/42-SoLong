@@ -6,14 +6,15 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 11:17:16 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 15:06:56 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/22 17:08:30 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
-#include "../allocation/allocation.h"
 #include <fcntl.h>
 #include <unistd.h>
+#include "../../include/so_long.h"
+#include "../allocation/allocation.h"
+#include "../../libraries/libft/libft.h"
 
 void	check_file_name(const char *filename)
 {
