@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:22:55 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 12:36:35 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/22 12:53:40 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void		init_mlx(t_game *god_obj);
 void		check_file_name(const char *filename);
 void		load_map_data(t_map *map, const char *filename);
 void		check_shape(t_game *god_obj);
-void		print_map(t_map *map);
 void		validate_map(t_map *map);
 void		set_textures(t_game *god_obj);
+void 		render_map(t_game *god_obj);
 #endif //SO_LONG_H

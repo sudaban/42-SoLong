@@ -9,11 +9,9 @@ SRC =	so_long.c src/allocation/allocation.c src/allocation/safe_exit.c \
 		src/map_operations/control.c src/map_operations/map.c \
 		src/init/initalize.c src/map_operations/map_utils.c \
 		libraries/gnl/get_next_line.c libraries/gnl/get_next_line_utils.c \
-		src/texture/texture.c
+		src/texture/texture.c src/render/render_map.c src/allocation/safe_exit_mlx.c
 
 OBJ = $(SRC:.c=.o)
-
-DEBUG_FLAGS = -g -fsanitize=address -fno-omit-frame-pointer
 
 all : $(NAME)
 
@@ -25,10 +23,6 @@ $(LIBFT):
 
 $(MINILIBX):
 	make -C libraries/mlx
-
-
-debug: CFLAGS += $(DEBUG_FLAGS)
-debug: fclean $(NAME)
 
 clean:
 	rm -f $(OBJ)

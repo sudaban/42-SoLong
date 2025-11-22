@@ -6,12 +6,13 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:34:46 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/20 10:35:09 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/22 13:00:14 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "allocation.h"
 #include <stdlib.h>
+#include "../../libraries/mlx/mlx.h"
 
 static t_memory	**get_mem_list(void)
 {
