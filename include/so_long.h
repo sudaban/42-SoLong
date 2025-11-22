@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:22:55 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 13:48:40 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/22 13:58:01 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,6 @@ typedef struct s_map
 	size_t	wall_count;
 }	t_map;
 
-typedef struct s_player
-{
-	int		step_count;
-}	t_player;
-
 typedef struct s_resource
 {
 	void	*window;
@@ -66,6 +61,7 @@ typedef struct s_game
 	t_map		*map_obj;
 	t_resource	*res_obj;
 	void		*mlx_obj;
+	int			move_count;
 }	t_game;
 
 t_map		*init_map(void);
