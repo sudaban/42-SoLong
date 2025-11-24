@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:22:55 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 13:58:01 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/24 10:52:16 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # define KEY_LEFT 97
 # define KEY_RIGHT 100
 
-# define ERROR_ARGC "Error\nInvalid number of arguments\n"
-# define ERROR_MAP "Error\nInvalid map\n"
-# define ERROR_EXTENSION "Error\nInvalid file extension\n"
-# define ERROR_ALLOCATION "Error\nMemory allocation failed\n"
+# define ERROR_ARGC "Error\nInvalid number of arguments"
+# define ERROR_MAP "Error\nInvalid map"
+# define ERROR_EXTENSION "Error\nInvalid file extension"
+# define ERROR_ALLOCATION "Error\nMemory allocation failed"
 # define ERROR_COLLECTIBLE "Error\nMap must contain at least one collectible (C)"
 # define ERROR_EXIT "Error\nMap must contain exactly one exit (E)"
 # define ERROR_PLAYER "Error\nMap must contain exactly one starting position (P)"
@@ -32,6 +32,7 @@
 # define ERROR_WALLS "Error\nMap is not enclosed by walls"
 # define ERROR_MAP_PATH "Error\nMap is not fully traversable / missing path"
 # define ERROR_TEXTURE "Error\nFailed to load textures"
+# define ERROR_MLX "Error\nMLX initialization failed"
 
 typedef struct s_map
 {

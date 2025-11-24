@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 16:27:13 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 17:13:15 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/24 10:52:01 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void	init_mlx(t_game *god_obj)
 
 	g = god_obj;
 	if (!g)
-		safe_exit(1, "Error\nGod object is NULL\n");
+		safe_exit(1, ERROR_ALLOCATION);
 	g->mlx_obj = mlx_init();
 	if (!g->mlx_obj)
-		safe_exit(1, "Error\nFailed to initialize MLX\n");
+		safe_exit(1, ERROR_MLX);
 	g->res_obj->window = mlx_new_window(g->mlx_obj,
 			g->map_obj->width * 64,
 			g->map_obj->height * 64,

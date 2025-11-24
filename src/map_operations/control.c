@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 11:17:16 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/24 10:35:55 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/24 10:49:42 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,4 @@ void	check_shape(t_game *game_obj)
 			safe_exit(1, ERROR_MAP);
 		i++;
 	}
-	ft_putstr_fd("Map shape is valid.\n", 1);
 }

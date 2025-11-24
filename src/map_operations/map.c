@@ -6,7 +6,7 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 15:29:17 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/24 10:47:03 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/24 10:52:24 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,8 @@ void	validate_map(t_map *map)
 	if (!map)
 		safe_exit(1, ERROR_MAP);
 	if (map->height == 0 || map->width == 0)
-		safe_exit(1, "Error\nMap is empty");
+		safe_exit(1, ERROR_MAP);
 	check_enclosed_by_walls(map);
 	parse_map_chars(map);
 	check_path_exists(map);
-	ft_putstr_fd("Map validation passed.\n", 1);
 }
