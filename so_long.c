@@ -6,11 +6,10 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:21:55 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 13:49:00 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/24 10:56:08 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <X11/X.h>
 #include "include/so_long.h"
 #include "libraries/libft/libft.h"
