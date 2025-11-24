@@ -6,12 +6,10 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 15:29:17 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 17:09:11 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/24 10:47:03 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <unistd.h>
 #include "../../include/so_long.h"
 #include "../../libraries/gnl/get_next_line.h"
 #include "../../libraries/libft/libft.h"

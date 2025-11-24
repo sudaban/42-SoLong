@@ -6,14 +6,11 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 15:20:53 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 15:35:56 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/24 10:37:57 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "../../include/so_long.h"
-#include "../../libraries/gnl/get_next_line.h"
-#include "../../libraries/libft/libft.h"
 #include "../allocation/allocation.h"
 #include "map.h"
 

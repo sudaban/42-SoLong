@@ -6,13 +6,12 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 13:29:34 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 14:02:29 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/24 10:35:01 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 #include "../allocation/allocation.h"
-#include "../../libraries/mlx/mlx.h"
 #include "../../libraries/libft/libft.h"
 #include "move_helpers.h"
 

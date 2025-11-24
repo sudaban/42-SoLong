@@ -6,14 +6,11 @@
 /*   By: sdaban <sdaban@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 14:04:16 by sdaban            #+#    #+#             */
-/*   Updated: 2025/11/22 14:04:17 by sdaban           ###   ########.fr       */
+/*   Updated: 2025/11/24 10:35:28 by sdaban           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "move_helpers.h"
 #include "../allocation/allocation.h"
-#include "../../libraries/libft/libft.h"
-#include "../../libraries/mlx/mlx.h"
 
 static int	is_out_of_bounds_or_wall(t_map *map, int y, int x)
 {
